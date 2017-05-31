@@ -7,7 +7,7 @@ const path = require('path')
 const config = {
     context: path.resolve(__dirname, 'src'),
     entry: {
-        scripts: "./scripts.js",
+        scripts: "./scripts.js"
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
