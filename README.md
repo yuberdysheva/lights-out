@@ -8,4 +8,4 @@ It will also toggle the 4 lights next to it(on the left, right,
 above and below it). To solve that puzzle, you have to turn off 
 all the lights on the bord.
 
-![Lights Out](preview.jpg =200x200)
+![Lights Out](preview.jpg){:height="200px" width="200px"}
