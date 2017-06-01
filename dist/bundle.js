@@ -10393,15 +10393,15 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(document).ready(function () {
         return grid;
     }
 
-    function draw(grid) {
-        __WEBPACK_IMPORTED_MODULE_0_jquery___default()("#tab").empty();
+    function draw() {
+        __WEBPACK_IMPORTED_MODULE_0_jquery___default()("#tab").html("");
         for (var i = 0; i < grid.length; i++) {
             __WEBPACK_IMPORTED_MODULE_0_jquery___default()("#tab").append("<tr></tr>");
             for (var j = 0; j < grid[0].length; j++) {
                 var rows = __WEBPACK_IMPORTED_MODULE_0_jquery___default()("tr");
                 var td = __WEBPACK_IMPORTED_MODULE_0_jquery___default()("<td></td>");
                 var div = __WEBPACK_IMPORTED_MODULE_0_jquery___default()("<div></div>");
-                addHandler(grid, div, i, j);
+                addHandler(div, i, j);
                 td.append(div);
                 if (grid[i][j] === 0) {
                     div.addClass("lightOff");
@@ -10411,15 +10411,25 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(document).ready(function () {
                 __WEBPACK_IMPORTED_MODULE_0_jquery___default()(rows[i]).append(td);
             }
         }
-        __WEBPACK_IMPORTED_MODULE_0_jquery___default()("#play").click(function () {
-            g = createGrid(5, 5);
-            draw(g);
-            playing = true;
-            __WEBPACK_IMPORTED_MODULE_0_jquery___default()("#alertMes").remove();
-        });
     }
 
-    function addHandler(grid, elem, row, col) {
+    __WEBPACK_IMPORTED_MODULE_0_jquery___default()("#play").click(function () {
+        for (var i = 0; i < grid.length; i++) {
+            for (var j = 0; j < grid[0].length; j++) {
+                var num = Math.random();
+                if (num < 0.33) {
+                    grid[i][j] = 1;
+                } else {
+                    grid[i][j] = 0;
+                }
+            }
+        }
+        draw(grid);
+        playing = true;
+        __WEBPACK_IMPORTED_MODULE_0_jquery___default()("#alertMes").remove();
+    });
+
+    function addHandler(elem, row, col) {
         elem.click(function () {
             if (!playing) {
                 return;
@@ -10471,7 +10481,7 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(document).ready(function () {
         });
     }
 
-    function isWin(grid) {
+    function isWin() {
         for (var i = 0; i < grid.length; i++) {
             for (var j = 0; j < grid[0].length; j++) {
                 if (grid[i][j] === 1) {
@@ -10489,8 +10499,8 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(document).ready(function () {
         __WEBPACK_IMPORTED_MODULE_0_jquery___default()("#container").append(div);
     }
 
-    var g = createGrid(5, 5);
-    draw(g);
+    var grid = createGrid(5, 5);
+    draw(grid);
 });
 
 /***/ }),

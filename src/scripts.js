@@ -24,15 +24,15 @@ $(document).ready(() => {
         return grid;
     }
 
-    function draw(grid){
-        $("#tab").empty();
+    function draw(){
+        $("#tab").html("");
         for(var i = 0; i < grid.length; i++){
             $("#tab").append("<tr></tr>");
             for(var j = 0; j < grid[0].length; j++){
                 var rows = $("tr");
                 var td = $("<td></td>");
                 var div = $("<div></div>");
-                addHandler(grid, div, i, j);
+                addHandler(div, i, j);
                 td.append(div);
                 if(grid[i][j] === 0) {
                     div.addClass("lightOff");
@@ -42,15 +42,25 @@ $(document).ready(() => {
                 $(rows[i]).append(td);
             }
         }
-        $("#play").click(function(){
-            g = createGrid(5, 5);
-            draw(g);
-            playing = true;
-            $("#alertMes").remove();
-        });
     }
 
-    function addHandler(grid, elem, row, col){
+    $("#play").click(function(){
+        for(var i = 0; i < grid.length; i++) {
+            for (var j = 0; j < grid[0].length; j++) {
+                var num = Math.random();
+                if (num < 0.33) {
+                    grid[i][j] = 1;
+                } else {
+                    grid[i][j] = 0;
+                }
+            }
+        }
+        draw(grid);
+        playing = true;
+        $("#alertMes").remove();
+    });
+
+    function addHandler(elem, row, col){
         elem.click(function(){
             if (!playing) {
                 return;
@@ -102,7 +112,7 @@ $(document).ready(() => {
         });
     }
 
-    function isWin(grid){
+    function isWin(){
         for (var i = 0; i < grid.length; i++){
             for (var j = 0; j < grid[0].length; j++){
                 if (grid[i][j] === 1){
@@ -120,6 +130,6 @@ $(document).ready(() => {
         $("#container").append(div);
     }
 
-    var g = createGrid(5, 5);
-    draw(g);
+    var grid = createGrid(5, 5);
+    draw(grid);
 });
