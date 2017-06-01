@@ -7,12 +7,18 @@ import "./styles.sass"
 
 $(document).ready(() => {
     var playing = true;
+
     function createGrid(rows, cols){
         var grid = [];
         for(var i = 0; i < rows; i++){
             grid.push([]);
             for(var j = 0; j < cols; j++){
-                grid[i].push(0);
+                var num = Math.random();
+                if (num < 0.33) {
+                    grid[i].push(1);
+                } else {
+                    grid[i].push(0);
+                }
             }
         }
         return grid;
@@ -37,13 +43,10 @@ $(document).ready(() => {
             }
         }
         $("#play").click(function(){
-            grid[2][3] = 1;
-            grid[2][4] = 1;
-            grid[2][2] = 1;
-            grid[3][3] = 1;
-            grid[1][3] = 1;
-            draw(grid);
+            g = createGrid(5, 5);
+            draw(g);
             playing = true;
+            $("#alertMes").remove();
         });
     }
 
@@ -93,6 +96,7 @@ $(document).ready(() => {
             if (isWin(grid)) {
                 playing = false;
                 //alert("Congratulations! You have turn  all lights out!");
+                alertMessage();
             }
             draw(grid);
         });
@@ -108,12 +112,14 @@ $(document).ready(() => {
         }
         return true;
     }
+    
+    function alertMessage() {
+        var div = $("<div></div>");
+        div.attr("id", "alertMes");
+        div.text("Congratulations! You have turned  all the lights out!");
+        $("#container").append(div);
+    }
 
     var g = createGrid(5, 5);
-    g[2][3] = 1;
-    g[2][4] = 1;
-    g[2][2] = 1;
-    g[3][3] = 1;
-    g[1][3] = 1;
     draw(g);
 });
