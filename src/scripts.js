@@ -36,6 +36,15 @@ $(document).ready(() => {
                 $(rows[i]).append(td);
             }
         }
+        $("#play").click(function(){
+            grid[2][3] = 1;
+            grid[2][4] = 1;
+            grid[2][2] = 1;
+            grid[3][3] = 1;
+            grid[1][3] = 1;
+            draw(grid);
+            playing = true;
+        });
     }
 
     function addHandler(grid, elem, row, col){
@@ -83,18 +92,7 @@ $(document).ready(() => {
             }
             if (isWin(grid)) {
                 playing = false;
-                alert("Congratulations! You have turn  all lights out!");
-                $("#play").css("display", "block");
-                $("#play").click(function(){
-                    $("#play").css("display", "none");
-                    grid[2][3] = 1;
-                    grid[2][4] = 1;
-                    grid[2][2] = 1;
-                    grid[3][3] = 1;
-                    grid[1][3] = 1;
-                    draw(grid);
-                    playing = true;
-                });
+                //alert("Congratulations! You have turn  all lights out!");
             }
             draw(grid);
         });

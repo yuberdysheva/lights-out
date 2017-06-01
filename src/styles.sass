@@ -1,33 +1,54 @@
+h1
+  text-align: center
+
+#container
+  text-align: center
+  display: flex
+
+table,
+#rules
+  flex-flow: row wrap
+
 table
-    border-collapse: collapse
+  border-collapse: collapse
+  margin-left: 20%
+  margin-right: 50px
 
 td
-    border: 1px solid gray
-    height: 50px
-    width: 50px
-    cursor: pointer
+  border: 1px solid gray
+  height: 80px
+  width: 80px
+  cursor: pointer
 
 .lightOff,
 .lightOn
-    width: 40px
-    height: 40px
-    border-radius: 50%
-    margin-left: 5px
+  width: 60px
+  height: 60px
+  border-radius: 50%
+  margin-left: 10px
 
 .lightOff
-    background: radial-gradient(lightgray, gray)
+  background: radial-gradient(lightgray, gray)
 
 .lightOn
-    background: radial-gradient(lightyellow, #efd123)
+  background: radial-gradient(lightyellow, #efd123)
 
 .lightOn:hover
-    background: radial-gradient(lightgray, gray)
+  background: radial-gradient(lightgray, gray)
 
-#play,
-#message
-    display: none
+#rules
+  width: 300px
+  p
+    text-align: center
 
 #play
-    cursor: pointer
-    outline: none
-    margin-top: 20px
+  cursor: pointer
+  outline: none
+  margin: 50px 0 0 0
+  width: 150px
+  height: 50px
+  background: darkgray
+  color: white
+  font-size: 16px
+
+
